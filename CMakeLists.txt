@@ -3,12 +3,16 @@ include(CMakeForceCompiler)
 SET(CMAKE_SYSTEM_NAME "Generic")
 SET(CMAKE_SYSTEM_VERSION 1)
 
-set(TOOLCHAIN_DIR "D:/Programy/GNU Tools ARM Embedded/5.4 2016q3/bin")
 
-CMAKE_FORCE_C_COMPILER(${TOOLCHAIN_DIR}/arm-none-eabi-gcc.exe GNU)
-CMAKE_FORCE_CXX_COMPILER(${TOOLCHAIN_DIR}/arm-none-eabi-g++.exe GNU)
-
-
+if(UNIX)
+  set(TOOLCHAIN_DIR /opt/gcc-arm-none-eabi-5_4-2016q3/bin/)
+  CMAKE_FORCE_C_COMPILER(${TOOLCHAIN_DIR}/arm-none-eabi-gcc GNU)
+  CMAKE_FORCE_CXX_COMPILER(${TOOLCHAIN_DIR}/arm-none-eabi-g++ GNU)
+else()
+  set(TOOLCHAIN_DIR "D:/Programy/GNU Tools ARM Embedded/5.4 2016q3/bin")
+  CMAKE_FORCE_C_COMPILER(${TOOLCHAIN_DIR}/arm-none-eabi-gcc.exe GNU)
+  CMAKE_FORCE_CXX_COMPILER(${TOOLCHAIN_DIR}/arm-none-eabi-g++.exe GNU)
+endif()
 
 project(STM32_RTTY C ASM CXX)
 

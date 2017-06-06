@@ -36,6 +36,7 @@ int napiecie;
 volatile char flaga = 0;//((((tx_delay / 1000) & 0x0f) << 3) | Smoc);
 uint16_t CRC_rtty = 0x12ab;  //checksum
 char buf_rtty[200];
+
 volatile unsigned char pun = 0;
 volatile unsigned int cun = 10;
 volatile unsigned char tx_on = 0;
